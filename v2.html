@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Portfolio — V2 Brutalist</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#f4f1ea;--fg:#0a0a0a;--muted:#6b6b6b;--line:#0a0a0a;--lime:#d6ff2a;--violet:#7c5cff;--orange:#ff4d1a}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--fg);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+::selection{background:var(--lime)}
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--orange);width:0;z-index:100}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;border-bottom:2px solid var(--line);background:var(--bg)}
+nav .brand{padding:16px 20px;border-right:2px solid var(--line);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.1em}
+nav .navlinks{flex:1;display:flex;align-items:center;gap:0;padding:0 14px}
+nav .navlinks a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid transparent}
+nav .navlinks a:hover{border-color:var(--line);background:var(--lime)}
+nav .navcta{border-left:2px solid var(--line);padding:0 20px;display:flex;align-items:center;background:var(--lime);font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+nav .navcta:hover{background:var(--fg);color:var(--bg)}
+.hero{min-height:100vh;padding:74px 0 0;display:grid;grid-template-columns:1.35fr .65fr;border-bottom:2px solid var(--line)}
+.hero-left{border-right:2px solid var(--line);padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(68px,11vw,168px);line-height:.82;letter-spacing:-.02em;font-weight:400}
+.hero h1 .lime{background:var(--lime);padding:0 8px;border:2px solid var(--line);display:inline-block;transform:rotate(-1deg)}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+.hero-sub{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:2px solid var(--line);padding-top:14px}
+.hero-sub p{font-size:13px;line-height:1.6;color:var(--muted)}
+.hero-sub b{color:var(--fg)}
+.hero-right{background:var(--violet);color:#fff;padding:24px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
+.hero-right:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.25), transparent 50%), repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(0,0,0,.06) 12px, rgba(0,0,0,.06) 14px)}
+.hero-right > *{position:relative}
+.hero-right .label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.hero-right h3{font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:.9;font-weight:400}
+.hero-right .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}
+.hero-right .stats div{background:#fff;color:var(--fg);border:2px solid var(--line);padding:12px}
+.hero-right .stats b{font-size:22px;display:block}
+.hero-right .stats span{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero-right .cta{border:2px solid var(--line);background:var(--lime);color:var(--fg);padding:12px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ticker{border-bottom:2px solid var(--line);background:var(--fg);color:var(--bg);overflow:hidden;white-space:nowrap;padding:10px 0}
+.ticker-track{display:inline-flex;animation:marq 14s linear infinite;gap:24px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.ticker-track span{border:1px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:999px}
+@keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.section{padding:22px 20px;border-bottom:2px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.section-head h2{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:.9;font-weight:400}
+.section-head h2 i{font-style:normal;background:var(--lime);border:2px solid var(--line);padding:0 6px;transform:rotate(1deg);display:inline-block}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pills button{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--line);background:#fff;padding:7px 12px;cursor:pointer}
+.pills button.active{background:var(--lime)}
+.works{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.wcard{grid-column:span 6;border:2px solid var(--line);background:#fff;overflow:hidden;position:relative;cursor:pointer;transition:transform .15s}
+.wcard:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--line)}
+.wcard.feat{grid-column:span 12;display:grid;grid-template-columns:1.15fr .85fr}
+.wcard.feat img{height:100%;min-height:360px}
+.wcard img{width:100%;height:280px;object-fit:cover;display:block;border-bottom:2px solid var(--line);filter:saturate(0);transition:.4s}
+.wcard:hover img{filter:saturate(1)}
+.wcard-body{padding:14px}
+.wcard-body h3{font-size:16px;font-weight:700;letter-spacing:-.02em}
+.wcard-body p{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
+.wcard-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.badge{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:3px 7px;background:var(--lime)}
+.wcard-top em{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);font-style:normal}
+.hidden{display:none !important}
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.scard{border:2px solid var(--line);background:#fff;padding:14px;transition:transform .12s}
+.scard:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--line)}
+.scard .k{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.scard .n{font-size:13px;font-weight:700;margin-top:6px;line-height:1.4}
+.scard .bar{height:6px;background:#eee;border:1px solid var(--line);margin-top:10px;overflow:hidden}
+.scard .fill{height:100%;background:var(--violet);width:0;transition:width 1s ease}
+.scard:nth-child(2) .fill{background:var(--orange)}
+.scard:nth-child(3) .fill{background:#0a0a0a}
+.scard:nth-child(4) .fill{background:var(--lime);border-right:1px solid var(--line)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:22px 20px;border-bottom:2px solid var(--line)}
+.about h2{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.85;font-weight:400}
+.about h2 .hl{background:var(--violet);color:#fff;padding:0 6px;border:2px solid var(--line);display:inline-block;transform:rotate(-1deg)}
+.about p{font-size:13px;line-height:1.7;color:var(--muted);margin-top:10px}
+.about p b{color:var(--fg)}
+.timeline{border:2px solid var(--line);background:#fff;margin-top:12px}
+.timeline div{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #ddd;font-size:12px;gap:10px}
+.timeline div:last-child{border-bottom:none}
+.timeline em{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);font-style:normal}
+.contact{display:grid;grid-template-columns:1fr 420px;gap:20px;padding:22px 20px}
+.contact h2{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.85;font-weight:400}
+.form{border:2px solid var(--line);background:#fff;padding:16px}
+.form input,.form textarea{width:100%;border:2px solid var(--line);padding:10px 12px;font-family:'Space Grotesk',sans-serif;font-size:13px;margin-bottom:10px;outline:none;background:#fff}
+.form input:focus,.form textarea:focus{background:var(--lime)}
+.form button{width:100%;background:var(--fg);color:#fff;border:2px solid var(--line);padding:12px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-weight:700}
+.form button:hover{background:var(--orange)}
+.sidetext{font-family:'Space Mono',monospace;font-size:11px;line-height:1.7;color:var(--muted)}
+.sidetext a{border-bottom:1px solid var(--line);color:var(--fg)}
+footer{padding:14px 20px;border-top:2px solid var(--line);display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;flex-wrap:wrap;gap:10px}
+.modal{position:fixed;inset:0;z-index:80;display:none}
+.modal.open{display:block}
+.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+.modal-box{position:relative;max-width:640px;margin:60px auto;background:#fff;border:2px solid var(--line);padding:20px;max-height:85vh;overflow:auto;box-shadow:8px 8px 0 var(--line)}
+.modal-box h3{font-size:20px}
+.modal-box p{font-size:13px;color:var(--muted);line-height:1.6;margin-top:6px}
+.modal-close{position:absolute;top:10px;right:10px;border:2px solid var(--line);background:var(--lime);padding:6px 10px;cursor:pointer;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+.reveal{opacity:0;transform:translateY(10px);transition:.5s}
+.reveal.in{opacity:1;transform:none}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-left{border-right:none;border-bottom:2px solid var(--line)}
+  .wcard{grid-column:span 12 !important}
+  .wcard.feat{grid-template-columns:1fr}
+  .stack-grid{grid-template-columns:1fr 1fr}
+  .about,.contact{grid-template-columns:1fr}
+  nav .navlinks{display:none}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<nav>
+  <div class="brand">DEWAN — V2 BRUTALIST</div>
+  <div class="navlinks"><a href="#work">Work</a><a href="#stack">Stack</a><a href="#about">About</a><a href="v1.html" style="background:var(--lime);border-color:var(--line)">V1 →</a></div>
+  <a class="navcta" href="#contact">Hire me →</a>
+</nav>
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <h1><span class="lime">TIDAK</span><br><span class="outline">KELIATAN</span><br>AI SLOP.</h1>
+      <div class="hero-sub">
+        <p><b>V2 rebuild 100% dari nol.</b> Bukan tweak warna V1 — ini brutalist, block-based, border tebal 2px, hard shadow, warna pop lime/violet/orange. Lawan template gradient ungu.</p>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Based Jakarta · Remote worldwide<br>Response &lt; 24h · One file · No build<br><span style="color:var(--fg)">Scroll → filter → modal → tilt</span></p>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="label">V2 — brutalist interactive</div>
+    <h3>Bikin web yang kepake, bukan yang keliatan AI.</h3>
+    <p style="font-size:13px;line-height:1.5;opacity:.95">Typography keras Bebas Neue, grid jujur, interaksi ada tujuan. No lorem, no fluff.</p>
+    <div class="stats">
+      <div><b>32+</b><span>Projects</span></div>
+      <div><b>4.9/5</b><span>Rating</span></div>
+      <div><b>2–3w</b><span>Delivery</span></div>
+      <div><b>100</b><span>Lighthouse</span></div>
+    </div>
+    <a class="cta" href="#work">Lihat work ↓</a>
+  </div>
+</section>
+<div class="ticker"><div class="ticker-track">
+  <span>BRUTALIST</span><span>NO AI SLOP</span><span>GRID 12 KOLOM</span><span>BORDER 2PX</span><span>HARD SHADOW</span><span>BRUTALIST</span><span>NO AI SLOP</span><span>GRID 12 KOLOM</span><span>BORDER 2PX</span><span>HARD SHADOW</span><span>BRUTALIST</span><span>NO AI SLOP</span><span>GRID 12 KOLOM</span><span>BORDER 2PX</span><span>HARD SHADOW</span>
+</div></div>
+<section class="section" id="work">
+  <div class="section-head">
+    <h2>SELECTED <i>WORK</i></h2>
+    <div class="pills" id="filters">
+      <button class="active" data-f="all">All</button>
+      <button data-f="web">Web</button>
+      <button data-f="security">Security</button>
+      <button data-f="product">Product</button>
+    </div>
+  </div>
+  <div class="works" id="works">
+    <article class="wcard feat reveal" data-cat="web" data-title="Arc Protocol — Explorer & EarnKit" data-desc="Explorer data-dense dibikin readable. Search cepat, realtime block feed, EarnKit dashboard. Next.js + WebSocket.">
+      <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200&q=80" alt="">
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Featured — Web3</span><em>2026 → open</em></div><h3>Arc Protocol — Explorer & EarnKit</h3><p>Click buat detail — brutalist card + hard shadow on hover.</p></div>
+    </article>
+    <article class="wcard reveal" data-cat="security" data-title="PuTI Telkom — Security Review" data-desc="Audit 11 findings, 27 evidence. Auth, IDOR, misconfig. Report handover ready.">
+      <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80" alt="">
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Security</span><em>2026</em></div><h3>PuTI Telkom — Security Review</h3><p>Audit portal akademik, chain lengkap.</p></div>
+    </article>
+    <article class="wcard reveal" data-cat="product" data-title="Cashback+ — Toolkit" data-desc="Reverse API + bulk ops, captcha & relay handling.">
+      <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80" alt="">
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Product</span><em>2025</em></div><h3>Cashback+ — Automation Toolkit</h3><p>API reverse & toolkit bulk.</p></div>
+    </article>
+    <article class="wcard reveal" data-cat="web" data-title="Shopify — Store Ops" data-desc="Custom theme + webhook pipeline, +18% conversion.">
+      <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="">
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Web</span><em>2025</em></div><h3>Shopify — Store Ops</h3><p>Theme ops + webhook.</p></div>
+    </article>
+    <article class="wcard reveal" data-cat="product" data-title="Islands.Games — Realtime Map" data-desc="Canvas 60fps, websocket sync, inventory realtime.">
+      <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=80" alt="">
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Product — WIP</span><em>2025</em></div><h3>Islands.Games — Realtime Map</h3><p>Canvas 60fps + sync.</p></div>
+    </article>
+  </div>
+</section>
+<section class="section" id="stack">
+  <div class="section-head"><h2>STACK <i style="background:var(--violet);color:#fff">TILT ME</i></h2><p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)">Hover card — tilt + fill anim</p></div>
+  <div class="stack-grid">
+    <div class="scard reveal"><div class="k">Frontend</div><div class="n">Next.js · React · TypeScript</div><div class="bar"><div class="fill" data-w="92%"></div></div></div>
+    <div class="scard reveal"><div class="k">Backend</div><div class="n">Node · Python · Postgres</div><div class="bar"><div class="fill" data-w="86%"></div></div></div>
+    <div class="scard reveal"><div class="k">Security</div><div class="n">Burp · Recon · Web3 Audit</div><div class="bar"><div class="fill" data-w="88%"></div></div></div>
+    <div class="scard reveal"><div class="k">Design</div><div class="n">Typography · Grid · Motion</div><div class="bar"><div class="fill" data-w="82%"></div></div></div>
+  </div>
+</section>
+<section class="about" id="about">
+  <div>
+    <h2>V2 <span class="hl">BEDA TOTAL</span><br>DARI V1</h2>
+    <p><b>V1:</b> editorial dark — Instrument Serif, #0a0a0a, muted, minimal.</p>
+    <p><b>V2:</b> brutalist light — Bebas Neue, #f4f1ea + lime/violet/orange pop, border 2px, hard shadow 6px. 100% beda sistem design.</p>
+    <p>Interaksi tetap kepake: filter, modal, tilt, progress — bukan animasi alay.</p>
+    <div class="timeline">
+      <div><b>V1 — Editorial dark</b><em>Instrument Serif · #0a0a0a</em></div>
+      <div><b>V2 — Brutalist light</b><em>Bebas Neue · #f4f1ea + pop</em></div>
+      <div><b>Next — Case pages</b><em>optional</em></div>
+    </div>
+  </div>
+  <div style="border:2px solid var(--line);background:#fff;padding:16px;align-self:start;box-shadow:6px 6px 0 var(--line)">
+    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Edit 30 detik</div>
+    <pre style="font-family:'Space Mono',monospace;font-size:11px;line-height:1.6;white-space:pre-wrap">1. Ganti 5 card di #works (data-title/desc + img)
+2. Ganti 4 card di #stack
+3. Ganti hero h1 + stats
+4. Push ke main → Pages auto live</pre>
+  </div>
+</section>
+<section class="contact" id="contact">
+  <div>
+    <h2>LET'S<br>BUILD <span style="background:var(--lime);border:2px solid var(--line);padding:0 6px;display:inline-block;transform:rotate(1deg)">REAL</span></h2>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.6;max-width:420px">Brief singkat → scope + timeline jujur. Copy email 1 klik atau kirim form.</p>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button onclick="copyEmail()" id="copyBtn" style="border:2px solid var(--line);background:var(--lime);padding:8px 12px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;cursor:pointer">Copy email → hello@domain.com</button>
+      <a href="mailto:hello@domain.com" style="border:2px solid var(--line);padding:8px 12px;font-family:'Space Mono',monospace;font-size:11px;background:#fff">Open mail</a>
+    </div>
+    <div class="sidetext" style="margin-top:14px">Email — hello@domain.com<br>Telegram — @username<br>Jakarta, UTC+7</div>
+  </div>
+  <form class="form" onsubmit="return handleSubmit(event)">
+    <input id="name" placeholder="Nama lu" required>
+    <input id="email" type="email" placeholder="Email" required>
+    <textarea id="msg" rows="4" placeholder="Ceritain projectnya..." required></textarea>
+    <button type="submit">Kirim Pesan →</button>
+    <small id="formStatus" style="display:block;margin-top:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)"></small>
+  </form>
+</section>
+<footer><span>© 2026 — V2 brutalist · <a href="v1.html" style="text-decoration:underline">V1 editorial →</a></span><span>1 file · no build · hard shadow</span></footer>
+<div class="modal" id="modal"><div class="modal-bg" onclick="closeModal()"></div><div class="modal-box"><button class="modal-close" onclick="closeModal()">✕</button><h3 id="mTitle"></h3><p id="mDesc"></p><div style="margin-top:12px;display:flex;gap:8px"><a href="#contact" onclick="closeModal()" style="background:var(--lime);border:2px solid var(--line);padding:8px 12px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700">Discuss →</a><button onclick="closeModal()" style="border:2px solid var(--line);background:#fff;padding:8px 12px;font-family:'Space Mono',monospace;font-size:11px;cursor:pointer">Close</button></div></div></div>
+<script>
+addEventListener('scroll',()=>{document.getElementById('prog').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+const btns=document.querySelectorAll('#filters button'), cards=document.querySelectorAll('.wcard');
+btns.forEach(b=>b.addEventListener('click',()=>{btns.forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.f;cards.forEach(c=>c.classList.toggle('hidden',!(f==='all'||c.dataset.cat===f)))}));
+const modal=document.getElementById('modal'), mT=document.getElementById('mTitle'), mD=document.getElementById('mDesc');
+cards.forEach(c=>c.addEventListener('click',()=>{mT.textContent=c.dataset.title; mD.textContent=c.dataset.desc; modal.classList.add('open')}));
+function closeModal(){modal.classList.remove('open')}
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w)}}),{threshold:.12});
+document.querySelectorAll('.reveal,.scard').forEach(el=>io.observe(el));
+document.querySelectorAll('.scard').forEach(card=>{
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const rx=(e.clientY-r.top - r.height/2)/10, ry=(e.clientX-r.left - r.width/2)/10;card.style.transform=`perspective(600px) rotateX(${-rx}deg) rotateY(${ry}deg) translate(-2px,-2px)`});
+  card.addEventListener('mouseleave',()=>card.style.transform='');
+});
+function handleSubmit(e){e.preventDefault();const n=document.getElementById('name').value.trim(), em=document.getElementById('email').value.trim(), m=document.getElementById('msg').value.trim(), s=document.getElementById('formStatus');if(!n||!em||!m){s.textContent='Lengkapi dulu bro.';return false}location.href=`mailto:hello@domain.com?subject=${encodeURIComponent('Project inquiry dari '+n)}&body=${encodeURIComponent(`Nama: ${n}\nEmail: ${em}\n\n${m}`)}`;s.textContent='Opening mail...';return false}
+function copyEmail(){navigator.clipboard.writeText('hello@domain.com');const b=document.getElementById('copyBtn');b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy email → hello@domain.com',1500)}
+</script>
+</body>
+</html>
