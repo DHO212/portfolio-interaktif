@@ -1,150 +1,154 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Portfolio — V2 Interactive</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Geist+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<title>Portfolio — V2 Brutalist</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#0a0a0a;--fg:#f2f0eb;--muted:#9a9a9a;--line:#222;--accent:#ff3b30;--card:#111}
+:root{--bg:#f4f1ea;--fg:#0a0a0a;--muted:#6b6b6b;--line:#0a0a0a;--lime:#d6ff2a;--violet:#7c5cff;--orange:#ff4d1a}
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--fg);font-family:'Instrument Sans',system-ui,sans-serif;overflow-x:hidden}
+body{background:var(--bg);color:var(--fg);font-family:'Space Grotesk',system-ui,sans-serif;overflow-x:hidden}
 a{color:inherit;text-decoration:none}
-::selection{background:var(--accent);color:#fff}
-#progress{position:fixed;top:0;left:0;height:2px;background:var(--accent);width:0;z-index:100}
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:16px 32px;border-bottom:1px solid var(--line);background:rgba(10,10,10,.85);backdrop-filter:blur(12px)}
-nav .logo{font-family:'Geist Mono',monospace;font-size:13px;letter-spacing:.12em}
-nav .logo i{color:var(--accent);font-style:normal}
-nav .links{display:flex;gap:24px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-nav .links a{padding:4px 0;border-bottom:1px solid transparent}
-nav .links a:hover{color:var(--fg);border-color:var(--fg)}
-nav .cta{font-family:'Geist Mono',monospace;font-size:11px;border:1px solid var(--fg);padding:8px 14px;border-radius:999px;background:var(--fg);color:var(--bg)}
-nav .cta:hover{background:transparent;color:var(--fg)}
-/* hero v2 - kinetic */
-.hero{min-height:100vh;padding:110px 32px 40px;display:grid;grid-template-columns:1.15fr .85fr;gap:32px;align-items:end;border-bottom:1px solid var(--line)}
-.hero h1{font-family:'Instrument Serif',serif;font-size:clamp(48px,8.5vw,128px);line-height:.86;letter-spacing:-.04em;font-weight:400;transition:transform .15s}
-.hero h1 i{font-style:italic;color:var(--accent)}
-.hero h1 span.var{color:var(--muted)}
-.hero-right{border:1px solid var(--line);background:var(--card);padding:20px}
-.hero-right .kicker{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
-.hero-right p{color:var(--muted);line-height:1.6;font-size:13px}
-.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.hero-stats div{border:1px solid var(--line);padding:12px}
-.hero-stats b{font-size:20px;display:block;letter-spacing:-.02em}
-.hero-stats span{font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.badges{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
-.badges span{font-family:'Geist Mono',monospace;font-size:10px;border:1px solid var(--line);padding:5px 9px;border-radius:999px;color:var(--muted)}
-/* filter */
-.section{padding:40px 32px}
-.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;border-bottom:1px solid var(--line);padding-bottom:14px;margin-bottom:20px;flex-wrap:wrap}
-.section-head h2{font-family:'Instrument Serif',serif;font-size:40px;font-weight:400;letter-spacing:-.03em}
-.filters{display:flex;gap:8px;flex-wrap:wrap}
-.filters button{font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);background:transparent;color:var(--muted);padding:7px 12px;border-radius:999px;cursor:pointer}
-.filters button.active{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-/* works v2 */
-.works{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
-.card{grid-column:span 6;border:1px solid var(--line);background:var(--card);overflow:hidden;cursor:pointer;position:relative;transition:transform .2s, border-color .2s}
-.card.wide{grid-column:span 12;display:grid;grid-template-columns:1.1fr .9fr}
-.card:hover{transform:translateY(-3px);border-color:#333}
-.card img{width:100%;height:320px;object-fit:cover;display:block;filter:grayscale(1);transition:.5s}
-.card.wide img{height:100%;min-height:340px}
-.card:hover img{filter:grayscale(0);transform:scale(1.015)}
-.card-body{padding:18px 18px 16px}
-.card-body h3{font-size:17px;font-weight:500;letter-spacing:-.02em}
-.card-body p{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.5}
-.card-meta{display:flex;justify-content:space-between;margin-top:12px;font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
-.card-meta i{color:var(--accent);font-style:normal}
-.card-num{position:absolute;top:10px;left:10px;background:var(--fg);color:var(--bg);font-family:'Geist Mono',monospace;font-size:10px;padding:4px 7px;border-radius:999px}
+::selection{background:var(--lime)}
+#prog{position:fixed;top:0;left:0;height:3px;background:var(--orange);width:0;z-index:100}
+nav{position:fixed;top:0;left:0;right:0;z-index:50;display:flex;border-bottom:2px solid var(--line);background:var(--bg)}
+nav .brand{padding:16px 20px;border-right:2px solid var(--line);font-family:'Space Mono',monospace;font-size:12px;font-weight:700;letter-spacing:.1em}
+nav .navlinks{flex:1;display:flex;align-items:center;gap:0;padding:0 14px}
+nav .navlinks a{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:8px 12px;border:1px solid transparent}
+nav .navlinks a:hover{border-color:var(--line);background:var(--lime)}
+nav .navcta{border-left:2px solid var(--line);padding:0 20px;display:flex;align-items:center;background:var(--lime);font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+nav .navcta:hover{background:var(--fg);color:var(--bg)}
+.hero{min-height:100vh;padding:74px 0 0;display:grid;grid-template-columns:1.35fr .65fr;border-bottom:2px solid var(--line)}
+.hero-left{border-right:2px solid var(--line);padding:28px 24px;display:flex;flex-direction:column;justify-content:space-between}
+.hero h1{font-family:'Bebas Neue',sans-serif;font-size:clamp(68px,11vw,168px);line-height:.82;letter-spacing:-.02em;font-weight:400}
+.hero h1 .lime{background:var(--lime);padding:0 8px;border:2px solid var(--line);display:inline-block;transform:rotate(-1deg)}
+.hero h1 .outline{color:transparent;-webkit-text-stroke:1.5px var(--fg)}
+.hero-sub{margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:14px;border-top:2px solid var(--line);padding-top:14px}
+.hero-sub p{font-size:13px;line-height:1.6;color:var(--muted)}
+.hero-sub b{color:var(--fg)}
+.hero-right{background:var(--violet);color:#fff;padding:24px;display:flex;flex-direction:column;gap:16px;position:relative;overflow:hidden}
+.hero-right:before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 30% 20%, rgba(255,255,255,.25), transparent 50%), repeating-linear-gradient(45deg, transparent, transparent 12px, rgba(0,0,0,.06) 12px, rgba(0,0,0,.06) 14px)}
+.hero-right > *{position:relative}
+.hero-right .label{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.9}
+.hero-right h3{font-family:'Bebas Neue',sans-serif;font-size:44px;line-height:.9;font-weight:400}
+.hero-right .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:auto}
+.hero-right .stats div{background:#fff;color:var(--fg);border:2px solid var(--line);padding:12px}
+.hero-right .stats b{font-size:22px;display:block}
+.hero-right .stats span{font-family:'Space Mono',monospace;font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.hero-right .cta{border:2px solid var(--line);background:var(--lime);color:var(--fg);padding:12px;text-align:center;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+.ticker{border-bottom:2px solid var(--line);background:var(--fg);color:var(--bg);overflow:hidden;white-space:nowrap;padding:10px 0}
+.ticker-track{display:inline-flex;animation:marq 14s linear infinite;gap:24px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase}
+.ticker-track span{border:1px solid rgba(255,255,255,.3);padding:4px 10px;border-radius:999px}
+@keyframes marq{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+.section{padding:22px 20px;border-bottom:2px solid var(--line)}
+.section-head{display:flex;justify-content:space-between;align-items:end;gap:16px;flex-wrap:wrap;margin-bottom:16px}
+.section-head h2{font-family:'Bebas Neue',sans-serif;font-size:52px;line-height:.9;font-weight:400}
+.section-head h2 i{font-style:normal;background:var(--lime);border:2px solid var(--line);padding:0 6px;transform:rotate(1deg);display:inline-block}
+.pills{display:flex;gap:8px;flex-wrap:wrap}
+.pills button{font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--line);background:#fff;padding:7px 12px;cursor:pointer}
+.pills button.active{background:var(--lime)}
+.works{display:grid;grid-template-columns:repeat(12,1fr);gap:12px}
+.wcard{grid-column:span 6;border:2px solid var(--line);background:#fff;overflow:hidden;position:relative;cursor:pointer;transition:transform .15s}
+.wcard:hover{transform:translate(-3px,-3px);box-shadow:6px 6px 0 var(--line)}
+.wcard.feat{grid-column:span 12;display:grid;grid-template-columns:1.15fr .85fr}
+.wcard.feat img{height:100%;min-height:360px}
+.wcard img{width:100%;height:280px;object-fit:cover;display:block;border-bottom:2px solid var(--line);filter:saturate(0);transition:.4s}
+.wcard:hover img{filter:saturate(1)}
+.wcard-body{padding:14px}
+.wcard-body h3{font-size:16px;font-weight:700;letter-spacing:-.02em}
+.wcard-body p{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.5}
+.wcard-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.badge{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;border:1px solid var(--line);padding:3px 7px;background:var(--lime)}
+.wcard-top em{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);font-style:normal}
 .hidden{display:none !important}
-/* stack v2 - tilt */
-.stack-v2{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:16px}
-.stack-card{border:1px solid var(--line);background:#0f0f0f;padding:16px;transition:transform .15s, border-color .15s}
-.stack-card:hover{border-color:#333}
-.stack-card .tag{font-family:'Geist Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.stack-card .name{font-size:13px;margin-top:8px;line-height:1.4}
-.stack-card .bar{height:3px;background:#222;margin-top:12px;border-radius:999px;overflow:hidden}
-.stack-card .fill{height:100%;background:var(--fg);width:0;transition:width 1s ease}
-/* about v2 */
-.about{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:48px 32px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.about h2{font-family:'Instrument Serif',serif;font-size:52px;line-height:.9;letter-spacing:-.04em;font-weight:400}
-.about h2 i{color:var(--accent);font-style:italic}
-.about p{color:var(--muted);line-height:1.7;font-size:14px;margin-top:12px}
-.timeline{margin-top:18px;border:1px solid var(--line)}
-.timeline div{display:flex;justify-content:space-between;padding:12px 14px;border-bottom:1px solid var(--line);font-size:13px;gap:12px}
+.stack-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.scard{border:2px solid var(--line);background:#fff;padding:14px;transition:transform .12s}
+.scard:hover{transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--line)}
+.scard .k{font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.scard .n{font-size:13px;font-weight:700;margin-top:6px;line-height:1.4}
+.scard .bar{height:6px;background:#eee;border:1px solid var(--line);margin-top:10px;overflow:hidden}
+.scard .fill{height:100%;background:var(--violet);width:0;transition:width 1s ease}
+.scard:nth-child(2) .fill{background:var(--orange)}
+.scard:nth-child(3) .fill{background:#0a0a0a}
+.scard:nth-child(4) .fill{background:var(--lime);border-right:1px solid var(--line)}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:20px;padding:22px 20px;border-bottom:2px solid var(--line)}
+.about h2{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.85;font-weight:400}
+.about h2 .hl{background:var(--violet);color:#fff;padding:0 6px;border:2px solid var(--line);display:inline-block;transform:rotate(-1deg)}
+.about p{font-size:13px;line-height:1.7;color:var(--muted);margin-top:10px}
+.about p b{color:var(--fg)}
+.timeline{border:2px solid var(--line);background:#fff;margin-top:12px}
+.timeline div{display:flex;justify-content:space-between;padding:10px 12px;border-bottom:1px solid #ddd;font-size:12px;gap:10px}
 .timeline div:last-child{border-bottom:none}
-.timeline em{font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);font-style:normal}
-/* contact */
-.contact{padding:48px 32px;display:grid;grid-template-columns:1fr 420px;gap:32px}
-.contact h2{font-family:'Instrument Serif',serif;font-size:52px;font-weight:400;letter-spacing:-.04em}
-.form{border:1px solid var(--line);padding:18px;background:#0f0f0f}
-.form input,.form textarea{width:100%;background:transparent;border:1px solid var(--line);color:var(--fg);padding:11px 12px;font-size:13px;outline:none;margin-bottom:10px;font-family:'Instrument Sans',sans-serif}
-.form input:focus,.form textarea:focus{border-color:var(--fg)}
-.form button{width:100%;background:var(--fg);color:var(--bg);border:none;padding:12px;font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer}
-.form button:hover{background:var(--accent);color:#fff}
-/* modal */
+.timeline em{font-family:'Space Mono',monospace;font-size:10px;color:var(--muted);font-style:normal}
+.contact{display:grid;grid-template-columns:1fr 420px;gap:20px;padding:22px 20px}
+.contact h2{font-family:'Bebas Neue',sans-serif;font-size:56px;line-height:.85;font-weight:400}
+.form{border:2px solid var(--line);background:#fff;padding:16px}
+.form input,.form textarea{width:100%;border:2px solid var(--line);padding:10px 12px;font-family:'Space Grotesk',sans-serif;font-size:13px;margin-bottom:10px;outline:none;background:#fff}
+.form input:focus,.form textarea:focus{background:var(--lime)}
+.form button{width:100%;background:var(--fg);color:#fff;border:2px solid var(--line);padding:12px;font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-weight:700}
+.form button:hover{background:var(--orange)}
+.sidetext{font-family:'Space Mono',monospace;font-size:11px;line-height:1.7;color:var(--muted)}
+.sidetext a{border-bottom:1px solid var(--line);color:var(--fg)}
+footer{padding:14px 20px;border-top:2px solid var(--line);display:flex;justify-content:space-between;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.06em;text-transform:uppercase;flex-wrap:wrap;gap:10px}
 .modal{position:fixed;inset:0;z-index:80;display:none}
 .modal.open{display:block}
-.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.7);backdrop-filter:blur(6px)}
-.modal-box{position:relative;max-width:720px;margin:60px auto;background:#0f0f0f;border:1px solid var(--line);padding:22px;max-height:85vh;overflow:auto}
-.modal-box h3{font-size:22px;letter-spacing:-.02em}
-.modal-box p{color:var(--muted);font-size:13px;line-height:1.6;margin-top:8px}
-.modal-close{position:absolute;top:12px;right:12px;border:1px solid var(--line);background:transparent;color:var(--fg);padding:6px 10px;cursor:pointer;font-family:'Geist Mono',monospace;font-size:11px}
-footer{padding:18px 32px;border-top:1px solid var(--line);display:flex;justify-content:space-between;font-family:'Geist Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;gap:12px;flex-wrap:wrap}
-/* cursor */
-.cursor{position:fixed;top:0;left:0;width:18px;height:18px;border:1px solid var(--fg);border-radius:50%;pointer-events:none;transform:translate(-50%,-50%);transition:width .18s,height .18s,background .18s;mix-blend-mode:difference;z-index:99}
-.cursor.hover{width:58px;height:58px;background:var(--fg)}
-.cursor-label{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Geist Mono',monospace;font-size:9px;color:var(--bg);opacity:0}
-.cursor.hover .cursor-label{opacity:1}
-.reveal{opacity:0;transform:translateY(14px);transition:.6s}
+.modal-bg{position:absolute;inset:0;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
+.modal-box{position:relative;max-width:640px;margin:60px auto;background:#fff;border:2px solid var(--line);padding:20px;max-height:85vh;overflow:auto;box-shadow:8px 8px 0 var(--line)}
+.modal-box h3{font-size:20px}
+.modal-box p{font-size:13px;color:var(--muted);line-height:1.6;margin-top:6px}
+.modal-close{position:absolute;top:10px;right:10px;border:2px solid var(--line);background:var(--lime);padding:6px 10px;cursor:pointer;font-family:'Space Mono',monospace;font-size:11px;font-weight:700}
+.reveal{opacity:0;transform:translateY(10px);transition:.5s}
 .reveal.in{opacity:1;transform:none}
 @media(max-width:900px){
   .hero{grid-template-columns:1fr}
-  .card{grid-column:span 12 !important}
-  .card.wide{grid-template-columns:1fr}
-  .stack-v2{grid-template-columns:1fr 1fr}
+  .hero-left{border-right:none;border-bottom:2px solid var(--line)}
+  .wcard{grid-column:span 12 !important}
+  .wcard.feat{grid-template-columns:1fr}
+  .stack-grid{grid-template-columns:1fr 1fr}
   .about,.contact{grid-template-columns:1fr}
-  nav .links{display:none}
-  .cursor{display:none}
+  nav .navlinks{display:none}
 }
 </style>
 </head>
 <body>
-<div id="progress"></div>
-<div class="cursor" id="cursor"><span class="cursor-label">VIEW</span></div>
+<div id="prog"></div>
 <nav>
-  <div class="logo">DEWAN — V2 <i>● interactive</i></div>
-  <div class="links"><a href="#work">Work</a><a href="#stack">Stack</a><a href="#about">About</a><a href="#contact">Contact</a><a href="/portfolio/v1.html" style="opacity:.6">V1 →</a></div>
-  <a class="cta" href="#contact">Available for work →</a>
+  <div class="brand">DEWAN — V2 BRUTALIST</div>
+  <div class="navlinks"><a href="#work">Work</a><a href="#stack">Stack</a><a href="#about">About</a><a href="v1.html" style="background:var(--lime);border-color:var(--line)">V1 →</a></div>
+  <a class="navcta" href="#contact">Hire me →</a>
 </nav>
-
-<section class="hero" id="top">
-  <div>
-    <h1 id="kinetic">Portfolio<br><i>yang nggak</i><br>keliatan <span class="var">AI slop.</span></h1>
-    <div style="margin-top:18px;display:flex;gap:10px;flex-wrap:wrap">
-      <span style="font-family:'Geist Mono',monospace;font-size:10px;border:1px solid var(--line);padding:6px 10px;border-radius:999px;background:var(--fg);color:var(--bg)">V2 — more interactive</span>
-      <span style="font-family:'Geist Mono',monospace;font-size:10px;border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:var(--muted)">1 file · no build</span>
+<section class="hero">
+  <div class="hero-left">
+    <div>
+      <h1><span class="lime">TIDAK</span><br><span class="outline">KELIATAN</span><br>AI SLOP.</h1>
+      <div class="hero-sub">
+        <p><b>V2 rebuild 100% dari nol.</b> Bukan tweak warna V1 — ini brutalist, block-based, border tebal 2px, hard shadow, warna pop lime/violet/orange. Lawan template gradient ungu.</p>
+        <p style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)">Based Jakarta · Remote worldwide<br>Response &lt; 24h · One file · No build<br><span style="color:var(--fg)">Scroll → filter → modal → tilt</span></p>
+      </div>
     </div>
   </div>
-  <div class="hero-right reveal">
-    <div class="kicker">Editorial · Fast · No generic gradient</div>
-    <p>V1 udah clean. V2 ditambah interactivity yang kepake: filter, modal, tilt, progress, kinetic type — tetap minimal, bukan gimmick.</p>
-    <div class="hero-stats">
+  <div class="hero-right">
+    <div class="label">V2 — brutalist interactive</div>
+    <h3>Bikin web yang kepake, bukan yang keliatan AI.</h3>
+    <p style="font-size:13px;line-height:1.5;opacity:.95">Typography keras Bebas Neue, grid jujur, interaksi ada tujuan. No lorem, no fluff.</p>
+    <div class="stats">
+      <div><b>32+</b><span>Projects</span></div>
+      <div><b>4.9/5</b><span>Rating</span></div>
+      <div><b>2–3w</b><span>Delivery</span></div>
       <div><b>100</b><span>Lighthouse</span></div>
-      <div><b>60fps</b><span>Interactions</span></div>
-      <div><b>&lt; 70kb</b><span>Total</span></div>
-      <div><b>V1 / V2</b><span>Toggle</span></div>
     </div>
-    <div class="badges"><span>Next.js</span><span>TypeScript</span><span>Motion</span><span>Burp Suite</span></div>
+    <a class="cta" href="#work">Lihat work ↓</a>
   </div>
 </section>
-
+<div class="ticker"><div class="ticker-track">
+  <span>BRUTALIST</span><span>NO AI SLOP</span><span>GRID 12 KOLOM</span><span>BORDER 2PX</span><span>HARD SHADOW</span><span>BRUTALIST</span><span>NO AI SLOP</span><span>GRID 12 KOLOM</span><span>BORDER 2PX</span><span>HARD SHADOW</span><span>BRUTALIST</span><span>NO AI SLOP</span><span>GRID 12 KOLOM</span><span>BORDER 2PX</span><span>HARD SHADOW</span>
+</div></div>
 <section class="section" id="work">
   <div class="section-head">
-    <h2>Selected Work — V2</h2>
-    <div class="filters" id="filters">
+    <h2>SELECTED <i>WORK</i></h2>
+    <div class="pills" id="filters">
       <button class="active" data-f="all">All</button>
       <button data-f="web">Web</button>
       <button data-f="security">Security</button>
@@ -152,165 +156,92 @@ footer{padding:18px 32px;border-top:1px solid var(--line);display:flex;justify-c
     </div>
   </div>
   <div class="works" id="works">
-    <article class="card wide reveal" data-cat="web" data-title="Arc Protocol — Explorer & EarnKit" data-desc="Redesign explorer yang data-dense jadi readable. Optimasi search, realtime block feed, UX buat dev dan retail. Next.js + WebSocket.">
-      <span class="card-num">01 — FEATURED</span>
+    <article class="wcard feat reveal" data-cat="web" data-title="Arc Protocol — Explorer & EarnKit" data-desc="Explorer data-dense dibikin readable. Search cepat, realtime block feed, EarnKit dashboard. Next.js + WebSocket.">
       <img src="https://images.unsplash.com/photo-1558655146-d09347e92766?w=1200&q=80" alt="">
-      <div class="card-body"><h3>Arc Protocol — Explorer & EarnKit</h3><p>Explorer redesign + EarnKit dashboard. Click buat detail →</p><div class="card-meta"><span>Web3 · Next.js · 2026</span><i>→ open</i></div></div>
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Featured — Web3</span><em>2026 → open</em></div><h3>Arc Protocol — Explorer & EarnKit</h3><p>Click buat detail — brutalist card + hard shadow on hover.</p></div>
     </article>
-    <article class="card reveal" data-cat="security" data-title="PuTI Telkom — Security Review" data-desc="Audit portal akademik, 11 findings, 27 evidence. Fokus ke auth, IDOR, dan misconfig. Report siap handover.">
-      <span class="card-num">02</span>
+    <article class="wcard reveal" data-cat="security" data-title="PuTI Telkom — Security Review" data-desc="Audit 11 findings, 27 evidence. Auth, IDOR, misconfig. Report handover ready.">
       <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=1200&q=80" alt="">
-      <div class="card-body"><h3>PuTI Telkom — Security Review</h3><p>Audit 11 findings dengan evidence chain.</p><div class="card-meta"><span>Security · 2026</span><i>→ open</i></div></div>
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Security</span><em>2026</em></div><h3>PuTI Telkom — Security Review</h3><p>Audit portal akademik, chain lengkap.</p></div>
     </article>
-    <article class="card reveal" data-cat="product" data-title="Cashback+ — Automation Toolkit" data-desc="Toolkit automasi API reverse + bulk ops. Handle captcha, relay, dan bulk claim.">
-      <span class="card-num">03</span>
+    <article class="wcard reveal" data-cat="product" data-title="Cashback+ — Toolkit" data-desc="Reverse API + bulk ops, captcha & relay handling.">
       <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1200&q=80" alt="">
-      <div class="card-body"><h3>Cashback+ — Automation Toolkit</h3><p>API reverse + toolkit bulk operation.</p><div class="card-meta"><span>Toolkit · 2025</span><i>→ open</i></div></div>
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Product</span><em>2025</em></div><h3>Cashback+ — Automation Toolkit</h3><p>API reverse & toolkit bulk.</p></div>
     </article>
-    <article class="card reveal" data-cat="web" data-title="Shopify — Custom Store Ops" data-desc="Custom theme + webhook pipeline. Checkout +18% conversion, filter bypass fix.">
-      <span class="card-num">04</span>
+    <article class="wcard reveal" data-cat="web" data-title="Shopify — Store Ops" data-desc="Custom theme + webhook pipeline, +18% conversion.">
       <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80" alt="">
-      <div class="card-body"><h3>Shopify — Custom Store Ops</h3><p>Theme ops + webhook pipeline.</p><div class="card-meta"><span>Web · 2025</span><i>→ open</i></div></div>
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Web</span><em>2025</em></div><h3>Shopify — Store Ops</h3><p>Theme ops + webhook.</p></div>
     </article>
-    <article class="card reveal" data-cat="product" data-title="Islands.Games — Realtime Map" data-desc="Canvas map 60fps, websocket state sync, inventory realtime.">
-      <span class="card-num">05</span>
+    <article class="wcard reveal" data-cat="product" data-title="Islands.Games — Realtime Map" data-desc="Canvas 60fps, websocket sync, inventory realtime.">
       <img src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?w=1200&q=80" alt="">
-      <div class="card-body"><h3>Islands.Games — Realtime Map</h3><p>Canvas 60fps + websocket sync.</p><div class="card-meta"><span>Product · WIP</span><i>→ open</i></div></div>
+      <div class="wcard-body"><div class="wcard-top"><span class="badge">Product — WIP</span><em>2025</em></div><h3>Islands.Games — Realtime Map</h3><p>Canvas 60fps + sync.</p></div>
     </article>
   </div>
 </section>
-
 <section class="section" id="stack">
-  <div class="section-head"><h2>Stack — hover me</h2><p style="font-family:'Geist Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:.08em;text-transform:uppercase">Tilt + fill on scroll</p></div>
-  <div class="stack-v2">
-    <div class="stack-card reveal"><div class="tag">Frontend</div><div class="name">Next.js · React · TypeScript</div><div class="bar"><div class="fill" data-w="92%"></div></div></div>
-    <div class="stack-card reveal"><div class="tag">Backend</div><div class="name">Node · Python · Postgres</div><div class="bar"><div class="fill" data-w="86%"></div></div></div>
-    <div class="stack-card reveal"><div class="tag">Security</div><div class="name">Burp · Recon · Web3 Audit</div><div class="bar"><div class="fill" data-w="88%"></div></div></div>
-    <div class="stack-card reveal"><div class="tag">Design</div><div class="name">Typography · Grid · Motion</div><div class="bar"><div class="fill" data-w="82%"></div></div></div>
+  <div class="section-head"><h2>STACK <i style="background:var(--violet);color:#fff">TILT ME</i></h2><p style="font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)">Hover card — tilt + fill anim</p></div>
+  <div class="stack-grid">
+    <div class="scard reveal"><div class="k">Frontend</div><div class="n">Next.js · React · TypeScript</div><div class="bar"><div class="fill" data-w="92%"></div></div></div>
+    <div class="scard reveal"><div class="k">Backend</div><div class="n">Node · Python · Postgres</div><div class="bar"><div class="fill" data-w="86%"></div></div></div>
+    <div class="scard reveal"><div class="k">Security</div><div class="n">Burp · Recon · Web3 Audit</div><div class="bar"><div class="fill" data-w="88%"></div></div></div>
+    <div class="scard reveal"><div class="k">Design</div><div class="n">Typography · Grid · Motion</div><div class="bar"><div class="fill" data-w="82%"></div></div></div>
   </div>
 </section>
-
 <section class="about" id="about">
   <div>
-    <h2>V2 <i>beda</i><br>apa dari V1?</h2>
-    <p>V1: editorial, clean, reveal + parallax. V2: tambah layer interactivity yang beneran kepake — bukan loading animation alay.</p>
-    <p style="color:var(--fg)">V2 add: filter kategori, modal detail project, tilt stack, progress bar, kinetic hero, copy-email 1-click.</p>
+    <h2>V2 <span class="hl">BEDA TOTAL</span><br>DARI V1</h2>
+    <p><b>V1:</b> editorial dark — Instrument Serif, #0a0a0a, muted, minimal.</p>
+    <p><b>V2:</b> brutalist light — Bebas Neue, #f4f1ea + lime/violet/orange pop, border 2px, hard shadow 6px. 100% beda sistem design.</p>
+    <p>Interaksi tetap kepake: filter, modal, tilt, progress — bukan animasi alay.</p>
     <div class="timeline">
-      <div><b>V1 — Editorial base</b><em>clean / minimal</em></div>
-      <div><b>V2 — Interactive layer</b><em>filter + modal + tilt</em></div>
-      <div><b>Next — Case study pages</b><em>optional</em></div>
+      <div><b>V1 — Editorial dark</b><em>Instrument Serif · #0a0a0a</em></div>
+      <div><b>V2 — Brutalist light</b><em>Bebas Neue · #f4f1ea + pop</em></div>
+      <div><b>Next — Case pages</b><em>optional</em></div>
     </div>
   </div>
-  <div style="border:1px solid var(--line);padding:18px;background:#0f0f0f;align-self:start">
-    <div style="font-family:'Geist Mono',monospace;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:10px">Cara ganti konten — 30 detik</div>
-    <pre style="font-family:'Geist Mono',monospace;font-size:11px;line-height:1.6;white-space:pre-wrap;color:#d6d6d6">1. Ganti 5 card di #works (data-title/data-desc + img)
-2. Ganti 4 stack di #stack
-3. Ganti copy hero + about
-4. Deploy — push ke main, Pages auto build</pre>
-    <div style="margin-top:12px;display:flex;gap:8px"><span style="font-size:10px;border:1px solid var(--line);padding:5px 9px;border-radius:999px;font-family:'Geist Mono',monospace">No npm</span><span style="font-size:10px;border:1px solid var(--line);padding:5px 9px;border-radius:999px;font-family:'Geist Mono',monospace">No framework</span></div>
+  <div style="border:2px solid var(--line);background:#fff;padding:16px;align-self:start;box-shadow:6px 6px 0 var(--line)">
+    <div style="font-family:'Space Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px">Edit 30 detik</div>
+    <pre style="font-family:'Space Mono',monospace;font-size:11px;line-height:1.6;white-space:pre-wrap">1. Ganti 5 card di #works (data-title/desc + img)
+2. Ganti 4 card di #stack
+3. Ganti hero h1 + stats
+4. Push ke main → Pages auto live</pre>
   </div>
 </section>
-
 <section class="contact" id="contact">
   <div>
-    <h2>Let's<br>build <i style="font-family:'Instrument Serif';font-style:italic;color:var(--accent)">something</i><br>real.</h2>
-    <p style="color:var(--muted);margin-top:10px;max-width:420px;line-height:1.6;font-size:13px">Brief singkat → scope + timeline jujur. Klik copy email atau kirim form.</p>
-    <div style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap">
-      <button onclick="copyEmail()" style="border:1px solid var(--line);background:var(--fg);color:var(--bg);padding:8px 12px;font-family:'Geist Mono',monospace;font-size:11px;cursor:pointer" id="copyBtn">Copy email → hello@domain.com</button>
-      <a href="mailto:hello@domain.com" style="border:1px solid var(--line);padding:8px 12px;font-family:'Geist Mono',monospace;font-size:11px">Open mail</a>
+    <h2>LET'S<br>BUILD <span style="background:var(--lime);border:2px solid var(--line);padding:0 6px;display:inline-block;transform:rotate(1deg)">REAL</span></h2>
+    <p style="font-size:13px;color:var(--muted);margin-top:8px;line-height:1.6;max-width:420px">Brief singkat → scope + timeline jujur. Copy email 1 klik atau kirim form.</p>
+    <div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap">
+      <button onclick="copyEmail()" id="copyBtn" style="border:2px solid var(--line);background:var(--lime);padding:8px 12px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700;cursor:pointer">Copy email → hello@domain.com</button>
+      <a href="mailto:hello@domain.com" style="border:2px solid var(--line);padding:8px 12px;font-family:'Space Mono',monospace;font-size:11px;background:#fff">Open mail</a>
     </div>
+    <div class="sidetext" style="margin-top:14px">Email — hello@domain.com<br>Telegram — @username<br>Jakarta, UTC+7</div>
   </div>
   <form class="form" onsubmit="return handleSubmit(event)">
     <input id="name" placeholder="Nama lu" required>
     <input id="email" type="email" placeholder="Email" required>
     <textarea id="msg" rows="4" placeholder="Ceritain projectnya..." required></textarea>
     <button type="submit">Kirim Pesan →</button>
-    <small id="formStatus" style="display:block;margin-top:8px;color:var(--muted);font-family:'Geist Mono',monospace;font-size:11px"></small>
+    <small id="formStatus" style="display:block;margin-top:8px;font-family:'Space Mono',monospace;font-size:11px;color:var(--muted)"></small>
   </form>
 </section>
-
-<footer><span>© 2026 — V2 interactive · <a href="/portfolio/v1.html" style="text-decoration:underline">Lihat V1</a></span><span>V2 — filter · modal · tilt · progress</span></footer>
-
-<div class="modal" id="modal">
-  <div class="modal-bg" onclick="closeModal()"></div>
-  <div class="modal-box">
-    <button class="modal-close" onclick="closeModal()">✕</button>
-    <h3 id="mTitle"></h3>
-    <p id="mDesc"></p>
-    <div style="margin-top:14px;display:flex;gap:8px">
-      <a href="#contact" onclick="closeModal()" style="background:var(--fg);color:var(--bg);padding:8px 12px;font-family:'Geist Mono',monospace;font-size:11px">Discuss this →</a>
-      <button onclick="closeModal()" style="border:1px solid var(--line);background:transparent;color:var(--fg);padding:8px 12px;font-family:'Geist Mono',monospace;font-size:11px;cursor:pointer">Close</button>
-    </div>
-  </div>
-</div>
-
+<footer><span>© 2026 — V2 brutalist · <a href="v1.html" style="text-decoration:underline">V1 editorial →</a></span><span>1 file · no build · hard shadow</span></footer>
+<div class="modal" id="modal"><div class="modal-bg" onclick="closeModal()"></div><div class="modal-box"><button class="modal-close" onclick="closeModal()">✕</button><h3 id="mTitle"></h3><p id="mDesc"></p><div style="margin-top:12px;display:flex;gap:8px"><a href="#contact" onclick="closeModal()" style="background:var(--lime);border:2px solid var(--line);padding:8px 12px;font-family:'Space Mono',monospace;font-size:11px;font-weight:700">Discuss →</a><button onclick="closeModal()" style="border:2px solid var(--line);background:#fff;padding:8px 12px;font-family:'Space Mono',monospace;font-size:11px;cursor:pointer">Close</button></div></div></div>
 <script>
-const cur=document.getElementById('cursor');
-let mx=0,my=0,cx=0,cy=0;
-addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
-(function loop(){cx+=(mx-cx)*.15;cy+=(my-cy)*.15;cur.style.left=cx+'px';cur.style.top=cy+'px';requestAnimationFrame(loop)})();
-document.querySelectorAll('.card,.filters button,.cta').forEach(el=>{
-  el.addEventListener('mouseenter',()=>cur.classList.add('hover'));
-  el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));
-});
-// progress
-addEventListener('scroll',()=>{
-  const pct=scrollY/(document.body.scrollHeight-innerHeight)*100;
-  document.getElementById('progress').style.width=pct+'%';
-},{passive:true});
-// kinetic hero
-const h1=document.getElementById('kinetic');
-addEventListener('mousemove',e=>{
-  const rx=(e.clientY/innerHeight-.5)*6, ry=(e.clientX/innerWidth-.5)*-6;
-  h1.style.transform=`perspective(600px) rotateX(${rx}deg) rotateY(${ry}deg)`;
-});
-// filters
-const btns=document.querySelectorAll('#filters button'), cards=document.querySelectorAll('.card');
-btns.forEach(b=>b.addEventListener('click',()=>{
-  btns.forEach(x=>x.classList.remove('active')); b.classList.add('active');
-  const f=b.dataset.f;
-  cards.forEach(c=>{
-    const show=f==='all'||c.dataset.cat===f;
-    c.classList.toggle('hidden',!show);
-  });
-}));
-// modal
-const modal=document.getElementById('modal'), mTitle=document.getElementById('mTitle'), mDesc=document.getElementById('mDesc');
-cards.forEach(c=>c.addEventListener('click',()=>{
-  mTitle.textContent=c.dataset.title; mDesc.textContent=c.dataset.desc;
-  modal.classList.add('open');
-}));
+addEventListener('scroll',()=>{document.getElementById('prog').style.width=(scrollY/(document.body.scrollHeight-innerHeight)*100)+'%'},{passive:true});
+const btns=document.querySelectorAll('#filters button'), cards=document.querySelectorAll('.wcard');
+btns.forEach(b=>b.addEventListener('click',()=>{btns.forEach(x=>x.classList.remove('active'));b.classList.add('active');const f=b.dataset.f;cards.forEach(c=>c.classList.toggle('hidden',!(f==='all'||c.dataset.cat===f)))}));
+const modal=document.getElementById('modal'), mT=document.getElementById('mTitle'), mD=document.getElementById('mDesc');
+cards.forEach(c=>c.addEventListener('click',()=>{mT.textContent=c.dataset.title; mD.textContent=c.dataset.desc; modal.classList.add('open')}));
 function closeModal(){modal.classList.remove('open')}
-// reveal + fill
-const io=new IntersectionObserver(ents=>{
-  ents.forEach(e=>{
-    if(e.isIntersecting){
-      e.target.classList.add('in');
-      e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w);
-    }
-  });
-},{threshold:.12});
-document.querySelectorAll('.reveal,.stack-card').forEach(el=>io.observe(el));
-// tilt stack
-document.querySelectorAll('.stack-card').forEach(card=>{
-  card.addEventListener('mousemove',e=>{
-    const r=card.getBoundingClientRect();
-    const rx=(e.clientY-r.top - r.height/2)/10, ry=(e.clientX-r.left - r.width/2)/10;
-    card.style.transform=`perspective(600px) rotateX(${-rx}deg) rotateY(${ry}deg)`;
-  });
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');e.target.querySelectorAll('.fill').forEach(f=>f.style.width=f.dataset.w)}}),{threshold:.12});
+document.querySelectorAll('.reveal,.scard').forEach(el=>io.observe(el));
+document.querySelectorAll('.scard').forEach(card=>{
+  card.addEventListener('mousemove',e=>{const r=card.getBoundingClientRect();const rx=(e.clientY-r.top - r.height/2)/10, ry=(e.clientX-r.left - r.width/2)/10;card.style.transform=`perspective(600px) rotateX(${-rx}deg) rotateY(${ry}deg) translate(-2px,-2px)`});
   card.addEventListener('mouseleave',()=>card.style.transform='');
 });
-// form + copy
-function handleSubmit(e){
-  e.preventDefault();
-  const n=document.getElementById('name').value.trim(), em=document.getElementById('email').value.trim(), m=document.getElementById('msg').value.trim();
-  const s=document.getElementById('formStatus');
-  if(!n||!em||!m){s.textContent='Lengkapi dulu bro.';return false}
-  const subject=encodeURIComponent('Project inquiry dari '+n), body=encodeURIComponent(`Nama: ${n}\nEmail: ${em}\n\n${m}`);
-  location.href=`mailto:hello@domain.com?subject=${subject}&body=${body}`;
-  s.textContent='Opening mail client...'; return false;
-}
-function copyEmail(){ navigator.clipboard.writeText('hello@domain.com'); const b=document.getElementById('copyBtn'); b.textContent='Copied ✓'; setTimeout(()=>b.textContent='Copy email → hello@domain.com',1500) }
+function handleSubmit(e){e.preventDefault();const n=document.getElementById('name').value.trim(), em=document.getElementById('email').value.trim(), m=document.getElementById('msg').value.trim(), s=document.getElementById('formStatus');if(!n||!em||!m){s.textContent='Lengkapi dulu bro.';return false}location.href=`mailto:hello@domain.com?subject=${encodeURIComponent('Project inquiry dari '+n)}&body=${encodeURIComponent(`Nama: ${n}\nEmail: ${em}\n\n${m}`)}`;s.textContent='Opening mail...';return false}
+function copyEmail(){navigator.clipboard.writeText('hello@domain.com');const b=document.getElementById('copyBtn');b.textContent='Copied ✓';setTimeout(()=>b.textContent='Copy email → hello@domain.com',1500)}
 </script>
 </body>
 </html>
